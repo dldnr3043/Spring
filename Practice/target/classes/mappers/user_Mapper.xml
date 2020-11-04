@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.myapp.userMapper">
+	<select id="getTime" resultType="string">
+		select now()
+	</select>
+	
+	<insert id="insertUser" parameterType="com.example.myapp.VO.UserVO">
+		insert into user(email, userpw, username) values(#{email}, #{userpw}, #{username})
+	</insert>
+
+	<select id="readUser" resultType="com.example.myapp.VO.UserVO">
+		select * from user
+		where email=#{email}
+	</select>
+	
+	<select id="readUserWithPW" resultType="com.example.myapp.VO.UserVO">
+		select * from user
+		where email=#{email} and userpw=#{userpw}
+	</select>
+</mapper>
